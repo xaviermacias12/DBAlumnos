@@ -1,0 +1,36 @@
+﻿@page
+@model DBAlumnos.Pages.CrearAlumnoModel
+@{
+    <div class="container">
+        <h2 class="page-title">Registrar Nuevo Alumno</h2>
+
+        <div class="form-container">
+            <form method="post">
+                <div class="form-group">
+                    <label asp-for="Alumno.Nombre" class="form-label">Nombre completo</label>
+                    <input asp-for="Alumno.Nombre" class="form-input" placeholder="Ingrese el nombre completo" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Carrera" class="form-label">Carrera</label>
+                    <input asp-for="Alumno.Carrera" class="form-input" placeholder="Ingrese la carrera" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Semestre" class="form-label">Semestre</label>
+                    <input asp-for="Alumno.Semestre" class="form-input" placeholder="Ingrese el semestre" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Correo" class="form-label">Correo electrónico</label>
+                    <input asp-for="Alumno.Correo" class="form-input" placeholder="ejemplo@correo.com" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-save">Guardar Alumno</button>
+                    <a asp-page="/Consulta" class="btn-cancel">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+}

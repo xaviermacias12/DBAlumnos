@@ -1,0 +1,38 @@
+﻿@page "{id:int}"
+@model DBAlumnos.Pages.EditarAlumnoModel
+@{
+    <div class="container">
+        <h2 class="page-title">Editar Alumno</h2>
+
+        <div class="form-container">
+            <form method="post">
+                <input type="hidden" asp-for="Alumno.Id" />
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Nombre" class="form-label">Nombre completo</label>
+                    <input asp-for="Alumno.Nombre" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Carrera" class="form-label">Carrera</label>
+                    <input asp-for="Alumno.Carrera" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Semestre" class="form-label">Semestre</label>
+                    <input asp-for="Alumno.Semestre" class="form-input" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Correo" class="form-label">Correo electrónico</label>
+                    <input asp-for="Alumno.Correo" class="form-input" />
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-update">Actualizar Cambios</button>
+                    <a asp-page="/Consulta" class="btn-cancel">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+}

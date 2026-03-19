@@ -1,0 +1,46 @@
+﻿@page "{id:int}"
+@model DBAlumnos.Pages.EliminarAlumnoModel
+@{
+    <div class="container">
+        <h2 class="page-title">Eliminar Alumno</h2>
+
+        <div class="delete-warning">
+            <p class="warning-text">¿Estás seguro de eliminar este alumno?</p>
+            <p class="warning-subtext">Esta acción no se puede deshacer.</p>
+        </div>
+
+        <div class="delete-info">
+            <div class="info-card">
+                <div class="info-row">
+                    <span class="info-label">Nombre:</span>
+                    <span class="info-value">@Model.Alumno.Nombre</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Carrera:</span>
+                    <span class="info-value">@Model.Alumno.Carrera</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Semestre:</span>
+                    <span class="info-value">@Model.Alumno.Semestre</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Correo:</span>
+                    <span class="info-value">@Model.Alumno.Correo</span>
+                </div>
+            </div>
+        </div>
+
+        <form method="post">
+            <input type="hidden" asp-for="Alumno.Id" />
+            <input type="hidden" asp-for="Alumno.Nombre" />
+            <input type="hidden" asp-for="Alumno.Carrera" />
+            <input type="hidden" asp-for="Alumno.Semestre" />
+            <input type="hidden" asp-for="Alumno.Correo" />
+
+            <div class="form-actions delete-actions">
+                <button type="submit" class="btn-delete-confirm">Sí, Eliminar Alumno</button>
+                <a asp-page="/Consulta" class="btn-cancel">No, Cancelar</a>
+            </div>
+        </form>
+    </div>
+}
