@@ -27,7 +27,7 @@ namespace DBAlumnos.Pages
             _context.Alumnos.Update(Alumno);
             _context.SaveChanges();
 
-            return RedirectToPage("Consulta");
+            return RedirectToPage("Index");
         }
     }
 }

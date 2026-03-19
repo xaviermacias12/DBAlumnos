@@ -28,7 +28,7 @@ namespace DBAlumnos.Pages
             _context.Alumnos.Remove(Alumno);
             _context.SaveChanges();
 
-            return RedirectToPage("Consulta");
+            return RedirectToPage("Index");
         }
     }
 }
