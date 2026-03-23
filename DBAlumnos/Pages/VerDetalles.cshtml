@@ -1,0 +1,48 @@
+﻿@page "{id:int}"
+@model DBAlumnos.Pages.VerDetallesModel
+@{
+    ViewData["Title"] = "Materias del Alumno";
+}
+
+<div class="container">
+    <h2 class="page-title">Relación Alumno - Materias</h2>
+
+    @if (Model.AlumnoSeleccionado != null)
+    {
+        <div class="info-alumno">
+            <p><strong>Alumno seleccionado:</strong> @Model.AlumnoSeleccionado.Nombre</p>
+        </div>
+    }
+
+    <div class="table-container">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Materias</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Lista != null && Model.Lista.Any())
+                {
+                    @foreach (var item in Model.Lista)
+                    {
+                        <tr>
+                            <td>@item.Materia.Nombre</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td style="text-align: center;">No hay materias registradas para este alumno</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+    <div class="action-bar">
+        <a asp-page="/Index" class="btn-back">Volver a la lista</a>
+    </div>
+</div>

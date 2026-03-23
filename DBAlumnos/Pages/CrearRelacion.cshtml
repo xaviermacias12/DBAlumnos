@@ -1,0 +1,40 @@
+﻿@page
+@model DBAlumnos.Pages.CrearRelacionModel
+@{
+    ViewData["Title"] = "Agregar Relación Alumno - Materia";
+}
+
+<div class="container">
+    <h2 class="page-title">Agregar Relación Alumno - Materia</h2>
+
+    <div class="form-container">
+        <form method="post">
+            <div class="form-group">
+                <label for="AlumnoId" class="form-label">Seleccionar Alumno:</label>
+                <select asp-for="AlumnoMateria.AlumnoId" class="form-control" required>
+                    <option value="">-- Seleccione un alumno --</option>
+                    @foreach (var alumno in Model.Alumnos)
+                    {
+                        <option value="@alumno.Id">@alumno.Nombre - @alumno.Carrera</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="MateriaId" class="form-label">Seleccionar Materia:</label>
+                <select asp-for="AlumnoMateria.MateriaId" class="form-control" required>
+                    <option value="">-- Seleccione una materia --</option>
+                    @foreach (var materia in Model.Materias)
+                    {
+                        <option value="@materia.Id">@materia.Nombre - @materia.Creditos créditos</option>
+                    }
+                </select>
+            </div>
+
+            <div class="action-bar">
+                <button type="submit" class="btn-create">Guardar Relación</button>
+                <a asp-page="/AlumnoMaterias" class="btn-back">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

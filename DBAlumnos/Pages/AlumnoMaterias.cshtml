@@ -1,0 +1,42 @@
+﻿@page
+@model DBAlumnos.Pages.AlumnoMateriasModel
+@{
+    ViewData["Title"] = "Relación Alumno - Materias";
+}
+
+<div class="container">
+    <h2 class="page-title">Relación Alumno - Materias</h2>
+
+    <div class="table-container">
+        <table class="styled-table">
+            <thead>
+            <th>Alumno</th>
+            <th>Materia</th>
+            </tr>
+            </thead>
+            <tbody>
+                @if (Model.Lista != null && Model.Lista.Any())
+                {
+                    @foreach (var item in Model.Lista)
+                    {
+                        <tr>
+                            <td>@item.Alumno?.Nombre</td>
+                            <td>@item.Materia?.Nombre</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2" style="text-align: center;">No hay relaciones registradas</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+
+    <div class="action-bar">
+        <a asp-page="/Index" class="btn-back">Volver a Alumnos</a>
+    </div>
+</div>

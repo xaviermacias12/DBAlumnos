@@ -23,8 +23,19 @@
 
                 <div class="form-group">
                     <label asp-for="Alumno.Correo" class="form-label">Correo electrónico</label>
-                    <input asp-for="Alumno.Correo" class="form-input" placeholder="ejemplo@correo.com" />
+                    <input asp-for="Alumno.Correo" class="form-input" placeholder="Ingrese el correo electronico" />
                 </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.Telefono" class="form-label">Telefono</label>
+                    <input asp-for="Alumno.Telefono" class="form-input" placeholder="Ingrese el numero de telefono" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Alumno.FechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input asp-for="Alumno.FechaNacimiento" class="form-input" placeholder="Ingrese su fecha de nacimiento" />
+                </div>
+
 
                 <div class="form-actions">
                     <button type="submit" class="btn-save">Guardar Alumno</button>

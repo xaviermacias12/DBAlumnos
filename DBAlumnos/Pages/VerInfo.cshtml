@@ -1,0 +1,46 @@
+﻿@page "{id:int}"
+@model DBAlumnos.Pages.VerInfoModel
+@{
+    ViewData["Title"] = "Información del Alumno";
+}
+
+<div class="container">
+    <h2 class="page-title">Información Completa del Alumno</h2>
+
+    @if (Model.AlumnoSeleccionado == null)
+    {
+        <div class="alert alert-warning">
+            <p>No se encontró el alumno solicitado</p>
+        </div>
+    }
+    else
+    {
+        <div class="info-card">
+            <div class="info-row">
+                <strong>ID:</strong> <span>@Model.AlumnoSeleccionado.Id</span>
+            </div>
+            <div class="info-row">
+                <strong>Nombre:</strong> <span>@Model.AlumnoSeleccionado.Nombre</span>
+            </div>
+            <div class="info-row">
+                <strong>Carrera:</strong> <span>@Model.AlumnoSeleccionado.Carrera</span>
+            </div>
+            <div class="info-row">
+                <strong>Semestre:</strong> <span>@Model.AlumnoSeleccionado.Semestre</span>
+            </div>
+            <div class="info-row">
+                <strong>Correo:</strong> <span>@Model.AlumnoSeleccionado.Correo</span>
+            </div>
+            <div class="info-row">
+                <strong>Teléfono:</strong> <span>@Model.AlumnoSeleccionado.Telefono</span>
+            </div>
+            <div class="info-row">
+                <strong>Fecha de Nacimiento:</strong> <span>@Model.AlumnoSeleccionado.FechaNacimiento.ToShortDateString()</span>
+            </div>
+        </div>
+
+        <div class="action-bar">
+            <a asp-page="/Index" class="btn-back">Volver a la lista</a>
+        </div>
+    }
+</div>
