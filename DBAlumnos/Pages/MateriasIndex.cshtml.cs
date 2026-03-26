@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace DBAlumnos.Pages
 {
-    public class AlumnoMateriasModel : PageModel
+    public class MateriasIndexModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public AlumnoMateriasModel(ApplicationDbContext context)
+        public MateriasIndexModel(ApplicationDbContext context)
         {
             _context = context;
-            Lista = new List<AlumnoMateria>();
         }
 
-        public List<AlumnoMateria> Lista { get; set; }
+        public List<Materia> ListaMaterias { get; set; }
 
         public async Task OnGetAsync()
         {
-            Lista = await _context.AlumnoMaterias
-                .Include(am => am.Alumno)
-                .Include(am => am.Materia)
+            ListaMaterias = await _context.Materias
+                .OrderBy(m => m.Nombre)
                 .ToListAsync();
         }
     }

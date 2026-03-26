@@ -1,4 +1,7 @@
-﻿namespace DBAlumnos.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace DBAlumnos.Models
 {
     public class Alumno
     {
@@ -10,5 +13,10 @@
         public string Telefono { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public List<AlumnoMateria> AlumnoMaterias { get; set; }
+
+        public Alumno()
+        {
+            AlumnoMaterias = new List<AlumnoMateria>();
+        }
     }
 }

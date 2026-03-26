@@ -1,0 +1,57 @@
+﻿@page "{alumnoId:int}/{materiaId:int}"
+@model DBAlumnos.Pages.EliminarRelacionModel
+@{
+    ViewData["Title"] = "Eliminar Relación";
+}
+
+<div class="container">
+    <h2 class="page-title">Eliminar Relación Alumno - Materia</h2>
+
+    @if (Model.Relacion == null)
+    {
+        <div class="alert alert-danger">
+            <p>No se encontró la relación especificada.</p>
+        </div>
+
+        <div class="action-bar">
+            <a asp-page="/AlumnoMaterias" class="btn-back">Volver a Relaciones</a>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <p><strong>¿Estás seguro de que deseas eliminar esta relación?</strong></p>
+            <p>Esta acción no se puede deshacer y eliminará la inscripción del alumno en esta materia.</p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-row">
+                <strong>Alumno:</strong>
+                <span>@Model.Relacion.Alumno?.Nombre</span>
+            </div>
+            <div class="info-row">
+                <strong>Carrera:</strong>
+                <span>@Model.Relacion.Alumno?.Carrera</span>
+            </div>
+            <div class="info-row">
+                <strong>Semestre:</strong>
+                <span>@Model.Relacion.Alumno?.Semestre</span>
+            </div>
+            <div class="info-row">
+                <strong>Materia:</strong>
+                <span>@Model.Relacion.Materia?.Nombre</span>
+            </div>
+            <div class="info-row">
+                <strong>Créditos:</strong>
+                <span>@Model.Relacion.Materia?.Creditos</span>
+            </div>
+        </div>
+
+        <div class="action-bar">
+            <form method="post">
+                <button type="submit" class="btn-delete-confirm">Sí, Eliminar Relación</button>
+                <a asp-page="/AlumnoMaterias" class="btn-cancel">Cancelar</a>
+            </form>
+        </div>
+    }
+</div>

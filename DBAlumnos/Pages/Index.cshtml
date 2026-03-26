@@ -1,11 +1,25 @@
 ﻿@page
-@model IndexModel
+@model DBAlumnos.Pages.IndexModel
 @{
     ViewData["Title"] = "Lista de Alumnos";
 }
 
 <div class="container">
     <h2 class="page-title">Lista de Alumnos</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
 
     <div class="table-container">
         <table class="styled-table">
@@ -15,10 +29,9 @@
             <th>Carrera</th>
             <th>Semestre</th>
             <th>Correo</th>
-            <th>Telefono</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Acciones</th>
-            </tr>
+            <th>Teléfono</th>
+            <th>Fecha Nacimiento</th>
+            <th style="min-width: 280px;">Acciones</th>
             </thead>
             <tbody>
                 @foreach (var alumno in Model.ListaAlumnos)
@@ -30,7 +43,7 @@
                         <td>@alumno.Semestre</td>
                         <td>@alumno.Correo</td>
                         <td>@alumno.Telefono</td>
-                        <td>@alumno.FechaNacimiento</td>
+                        <td>@(alumno.FechaNacimiento.Year > 1 ? alumno.FechaNacimiento.ToShortDateString() : "No registrada")</td>
                         <td class="actions">
                             <a asp-page="/VerInfo" asp-route-id="@alumno.Id" class="btn-details">Ver Detalles</a>
                             <a asp-page="/VerDetalles" asp-route-id="@alumno.Id" class="btn-subjects">Ver Materias</a>

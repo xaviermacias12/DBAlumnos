@@ -1,10 +1,19 @@
-﻿namespace DBAlumnos.Models
+﻿using System.Collections.Generic;
+
+namespace DBAlumnos.Models
 {
     public class Materia
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
         public int Creditos { get; set; }
+
+        // Propiedad de navegación - inicializada en constructor
         public List<AlumnoMateria> AlumnoMaterias { get; set; }
+
+        public Materia()
+        {
+            AlumnoMaterias = new List<AlumnoMateria>();
+        }
     }
 }

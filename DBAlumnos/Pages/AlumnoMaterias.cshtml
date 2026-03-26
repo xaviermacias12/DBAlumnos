@@ -12,7 +12,7 @@
             <thead>
             <th>Alumno</th>
             <th>Materia</th>
-            </tr>
+            <th>Acciones</th>
             </thead>
             <tbody>
                 @if (Model.Lista != null && Model.Lista.Any())
@@ -20,23 +20,26 @@
                     @foreach (var item in Model.Lista)
                     {
                         <tr>
-                            <td>@item.Alumno?.Nombre</td>
-                            <td>@item.Materia?.Nombre</td>
+                            <td style="width: 40%;">@item.Alumno?.Nombre</td>
+                            <td style="width: 40%;">@item.Materia?.Nombre</td>
+                            <td class="actions" style="width: 20%;">
+                                <a asp-page="/EliminarRelacion"
+                                   asp-route-alumnoId="@item.AlumnoId"
+                                   asp-route-materiaId="@item.MateriaId"
+                                   class="btn-delete">
+                                    Eliminar
+                                </a>
+                            </td>
                         </tr>
                     }
                 }
                 else
                 {
                     <tr>
-                        <td colspan="2" style="text-align: center;">No hay relaciones registradas</td>
+                        <td colspan="3" style="text-align: center;">No hay relaciones registradas</td>
                     </tr>
                 }
             </tbody>
         </table>
-    </div>
-    <br />
-
-    <div class="action-bar">
-        <a asp-page="/Index" class="btn-back">Volver a Alumnos</a>
     </div>
 </div>

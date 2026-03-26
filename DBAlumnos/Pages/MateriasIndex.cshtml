@@ -1,0 +1,35 @@
+﻿@page
+@model DBAlumnos.Pages.MateriasIndexModel
+@{
+    ViewData["Title"] = "Lista de Materias";
+}
+
+<div class="container">
+    <h2 class="page-title">Lista de Materias</h2>
+
+    <div class="table-container">
+        <table class="styled-table">
+            <thead>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Créditos</th>
+            <th>Acciones</th>
+            </thead>
+            <tbody>
+                @foreach (var materia in Model.ListaMaterias)
+                {
+                    <tr>
+                        <td>@materia.Id</td>
+                        <td>@materia.Nombre</td>
+                        <td>@materia.Creditos</td>
+                        <td class="actions">
+                            <a asp-page="/MateriasEditar" asp-route-id="@materia.Id" class="btn-edit">Editar</a>
+                            <a asp-page="/MateriasEliminar" asp-route-id="@materia.Id" class="btn-delete">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+</div>
