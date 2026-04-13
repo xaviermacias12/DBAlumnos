@@ -59,6 +59,7 @@ namespace DBAlumnos.Pages
             _context.AlumnoMaterias.Add(AlumnoMateria);
             await _context.SaveChangesAsync();
 
+            TempData["SuccessMessage"] = "Relación creada con éxito";
             return RedirectToPage("/AlumnoMaterias");
         }
 

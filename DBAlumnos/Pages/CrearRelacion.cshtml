@@ -7,6 +7,20 @@
 <div class="container">
     <h2 class="page-title">Agregar Relación Alumno - Materia</h2>
 
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
     <div class="form-container">
         <form method="post">
             <div class="form-group">

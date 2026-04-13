@@ -15,27 +15,39 @@
     }
     else
     {
-        <div class="info-card">
-            <div class="info-row">
-                <strong>ID:</strong> <span>@Model.AlumnoSeleccionado.Id</span>
+        <div class="info-card" style="display: flex; gap: 30px; align-items: flex-start;">
+            <div style="text-align: center;">
+                @if (!string.IsNullOrEmpty(Model.AlumnoSeleccionado.FotoUrl))
+                {
+                    <img src="@Model.AlumnoSeleccionado.FotoUrl" alt="Foto" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #4CAF50;" />
+                }
+                else
+                {
+                    <img src="/uploads/alumnos/default.png" alt="Sin foto" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #4CAF50;" />
+                }
             </div>
-            <div class="info-row">
-                <strong>Nombre:</strong> <span>@Model.AlumnoSeleccionado.Nombre</span>
-            </div>
-            <div class="info-row">
-                <strong>Carrera:</strong> <span>@Model.AlumnoSeleccionado.Carrera</span>
-            </div>
-            <div class="info-row">
-                <strong>Semestre:</strong> <span>@Model.AlumnoSeleccionado.Semestre</span>
-            </div>
-            <div class="info-row">
-                <strong>Correo:</strong> <span>@Model.AlumnoSeleccionado.Correo</span>
-            </div>
-            <div class="info-row">
-                <strong>Teléfono:</strong> <span>@Model.AlumnoSeleccionado.Telefono</span>
-            </div>
-            <div class="info-row">
-                <strong>Fecha de Nacimiento:</strong> <span>@Model.AlumnoSeleccionado.FechaNacimiento.ToShortDateString()</span>
+            <div style="flex: 1;">
+                <div class="info-row">
+                    <strong>ID:</strong> <span>@Model.AlumnoSeleccionado.Id</span>
+                </div>
+                <div class="info-row">
+                    <strong>Nombre:</strong> <span>@Model.AlumnoSeleccionado.Nombre</span>
+                </div>
+                <div class="info-row">
+                    <strong>Carrera:</strong> <span>@Model.AlumnoSeleccionado.Carrera</span>
+                </div>
+                <div class="info-row">
+                    <strong>Semestre:</strong> <span>@Model.AlumnoSeleccionado.Semestre</span>
+                </div>
+                <div class="info-row">
+                    <strong>Correo:</strong> <span>@Model.AlumnoSeleccionado.Correo</span>
+                </div>
+                <div class="info-row">
+                    <strong>Teléfono:</strong> <span>@Model.AlumnoSeleccionado.Telefono</span>
+                </div>
+                <div class="info-row">
+                    <strong>Fecha de Nacimiento:</strong> <span>@Model.AlumnoSeleccionado.FechaNacimiento.ToShortDateString()</span>
+                </div>
             </div>
         </div>
 

@@ -1,47 +1,66 @@
 ﻿@page
 @model DBAlumnos.Pages.CrearAlumnoModel
 @{
-    <div class="container">
-        <h2 class="page-title">Registrar Nuevo Alumno</h2>
+    ViewData["Title"] = "Crear Alumno";
+}
 
-        <div class="form-container">
-            <form method="post">
-                <div class="form-group">
-                    <label asp-for="Alumno.Nombre" class="form-label">Nombre completo</label>
-                    <input asp-for="Alumno.Nombre" class="form-input" placeholder="Ingrese el nombre completo" />
-                </div>
+<div class="container">
+    <h2 class="page-title">Registrar Nuevo Alumno</h2>
 
-                <div class="form-group">
-                    <label asp-for="Alumno.Carrera" class="form-label">Carrera</label>
-                    <input asp-for="Alumno.Carrera" class="form-input" placeholder="Ingrese la carrera" />
-                </div>
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-                <div class="form-group">
-                    <label asp-for="Alumno.Semestre" class="form-label">Semestre</label>
-                    <input asp-for="Alumno.Semestre" class="form-input" placeholder="Ingrese el semestre" />
-                </div>
+            <div class="form-group">
+                <label asp-for="Alumno.Nombre" class="form-label">Nombre completo:</label>
+                <input asp-for="Alumno.Nombre" class="form-control" required />
+                <span asp-validation-for="Alumno.Nombre" class="text-danger"></span>
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="Alumno.Correo" class="form-label">Correo electrónico</label>
-                    <input asp-for="Alumno.Correo" class="form-input" placeholder="Ingrese el correo electronico" />
-                </div>
+            <div class="form-group">
+                <label asp-for="Alumno.Carrera" class="form-label">Carrera:</label>
+                <input asp-for="Alumno.Carrera" class="form-control" required />
+                <span asp-validation-for="Alumno.Carrera" class="text-danger"></span>
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="Alumno.Telefono" class="form-label">Telefono</label>
-                    <input asp-for="Alumno.Telefono" class="form-input" placeholder="Ingrese el numero de telefono" />
-                </div>
+            <div class="form-group">
+                <label asp-for="Alumno.Semestre" class="form-label">Semestre:</label>
+                <input asp-for="Alumno.Semestre" class="form-control" required />
+                <span asp-validation-for="Alumno.Semestre" class="text-danger"></span>
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="Alumno.FechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                    <input asp-for="Alumno.FechaNacimiento" class="form-input" placeholder="Ingrese su fecha de nacimiento" />
-                </div>
+            <div class="form-group">
+                <label asp-for="Alumno.Correo" class="form-label">Correo electrónico:</label>
+                <input asp-for="Alumno.Correo" class="form-control" type="email" required />
+                <span asp-validation-for="Alumno.Correo" class="text-danger"></span>
+            </div>
 
+            <div class="form-group">
+                <label asp-for="Alumno.Telefono" class="form-label">Teléfono:</label>
+                <input asp-for="Alumno.Telefono" class="form-control" />
+                <span asp-validation-for="Alumno.Telefono" class="text-danger"></span>
+            </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="btn-save">Guardar Alumno</button>
-                    <a asp-page="/Index" class="btn-cancel">Cancelar</a>
-                </div>
-            </form>
-        </div>
+            <div class="form-group">
+                <label asp-for="Alumno.FechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                <input asp-for="Alumno.FechaNacimiento" class="form-control" type="date" required />
+                <span asp-validation-for="Alumno.FechaNacimiento" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Foto" class="form-label">Foto del Alumno (opcional):</label>
+                <input type="file" id="Foto" name="Foto" class="form-control" accept="image/*" />
+                <small class="text-muted">Formatos permitidos: JPG, PNG, GIF. Máximo 2MB</small>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-save">Guardar Alumno</button>
+                <a asp-page="/Index" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
     </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

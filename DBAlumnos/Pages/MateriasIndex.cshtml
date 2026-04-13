@@ -7,6 +7,20 @@
 <div class="container">
     <h2 class="page-title">Lista de Materias</h2>
 
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
     <div class="table-container">
         <table class="styled-table">
             <thead>
@@ -16,16 +30,25 @@
             <th>Acciones</th>
             </thead>
             <tbody>
-                @foreach (var materia in Model.ListaMaterias)
+                @if (Model.ListaMaterias != null && Model.ListaMaterias.Any())
+                {
+                    @foreach (var materia in Model.ListaMaterias)
+                    {
+                        <tr>
+                             <td>@materia.Id</td>
+                             <td>@materia.Nombre</td>
+                             <td>@materia.Creditos</td>
+                             <td class="actions">
+                                 <a asp-page="/MateriasEditar" asp-route-id="@materia.Id" class="btn-edit">Editar</a>
+                                 <a asp-page="/MateriasEliminar" asp-route-id="@materia.Id" class="btn-delete">Eliminar</a>
+                             </td>
+                        </tr>
+                    }
+                }
+                else
                 {
                     <tr>
-                        <td>@materia.Id</td>
-                        <td>@materia.Nombre</td>
-                        <td>@materia.Creditos</td>
-                        <td class="actions">
-                            <a asp-page="/MateriasEditar" asp-route-id="@materia.Id" class="btn-edit">Editar</a>
-                            <a asp-page="/MateriasEliminar" asp-route-id="@materia.Id" class="btn-delete">Eliminar</a>
-                        </td>
+                        <td colspan="4" style="text-align: center;">No hay materias registradas</td>
                     </tr>
                 }
             </tbody>
